@@ -6,3 +6,9 @@ RGB_MATRIX_ENABLE = no     # Enable keyboard RGB matrix (do not use together wit
 RGB_MATRIX_DRIVER = WS2812 # RGB matrix driver support
 
 RGB_MATRIX_SUPPORTED = yes
+
+
+SPACE_CADET_ENABLE=no
+GRAVE_ESC_ENABLE=no
+MAGIC_ENABLE=no
+RGBLIGHT_ENABLE=no
