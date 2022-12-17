@@ -33,7 +33,7 @@ oled_write_P(PSTR("Layer: "), false);
 int layer = get_highest_layer(layer_state | default_layer_state);
 switch (layer) {
 case 0:
-oled_write_P(PSTR("Colemak-DH\n"), false);
+oled_write_P(PSTR("Canary\n"), false);
 break;
 case 1:
 oled_write_P(PSTR("QWERTY\n"), false);
