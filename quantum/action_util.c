@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "timer.h"
 #include "keycode_config.h"
 #include <string.h>
-
+#include "wait.h"
 extern keymap_config_t keymap_config;
 
 static uint8_t real_mods = 0;
@@ -245,6 +245,9 @@ bool is_oneshot_enabled(void) {
  * FIXME: needs doc
  */
 void send_keyboard_report(void) {
+
+    uint8_t old_mods = keyboard_report->mods;
+
     keyboard_report->mods = real_mods;
     keyboard_report->mods |= weak_mods;
 
@@ -281,6 +284,11 @@ void send_keyboard_report(void) {
         host_keyboard_send(keyboard_report);
     }
 #endif
+
+    if (keyboard_report->mods != old_mods) {
+        // Wait for a fixed amount of time to allow the host to process the report
+        wait_ms(3);
+    }
 }
 
 /** \brief Get mods
